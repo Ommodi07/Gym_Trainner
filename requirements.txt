@@ -1,2 +1,5 @@
 langchain_groq
 streamlit
+scikit-learn
+numpy
+pandas
