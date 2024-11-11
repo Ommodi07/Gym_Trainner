@@ -11,7 +11,7 @@ except KeyError:
 import os
 st.write("Current working directory:", os.getcwd())
 st.write("Files in directory:", os.listdir(os.getcwd()))
-print("File exists:", os.path.exists('trained.sav'))
+st.write("File exists:", os.path.exists('trained.sav'))
 
 llm = 0;
 # Initialize the ChatGroq model
@@ -24,17 +24,11 @@ if 'groq_api_key' in locals():
 
 # Load the pre-trained model
 model_load = 0;
-try:
-    with open('trained.sav', 'rb') as f:
-        model_load = pickle.load(f)
-    st.write("Model loaded successfully.")
-except Exception as e:
-    st.error(f"Error loading the model: {str(e)}")
 
-# try:
-#     model_load = pickle.load(open('trained.sav', 'rb'))
-# except FileNotFoundError:
-#     st.error("The trained model file 'trained.sav' was not found.")
+try:
+    model_load = pickle.load(open('trained.sav', 'rb'))
+except FileNotFoundError:
+    st.error("The trained model file 'trained.sav' was not found.")
 
 # Custom CSS for better styling
 st.markdown("""
