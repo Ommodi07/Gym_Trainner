@@ -40,9 +40,8 @@ import os
 st.write("Current working directory:", os.getcwd())
 st.write("Files in directory:", os.listdir(os.getcwd()))
 
-llm = 0;
 # Initialize the ChatGroq model
-if 'groq_api_key' in locals():
+if 'groq_api' in locals():
     llm = ChatGroq(
         model="llama-3.1-70b-versatile",
         temperature=0,
