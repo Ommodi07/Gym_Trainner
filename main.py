@@ -22,7 +22,7 @@ if 'groq_api_key' in locals():
     )
 
 import joblib
-joblib.dump(model, 'trained.sav')
+joblib.dump('trained.sav')
 
 # Load the pre-trained model
 model_load = 0;
