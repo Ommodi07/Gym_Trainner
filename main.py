@@ -21,11 +21,14 @@ if 'groq_api_key' in locals():
         groq_api_key=groq_api
     )
 
+import joblib
+joblib.dump(model, 'trained.sav')
+
 # Load the pre-trained model
 model_load = 0;
 
 try:
-    model_load = pickle.load(open('trained.sav', 'rb'))
+    model_load = joblib.load('trained.sav')
 except FileNotFoundError:
     st.error("The trained model file 'trained.sav' was not found.")
 
