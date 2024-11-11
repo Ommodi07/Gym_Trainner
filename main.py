@@ -1,3 +1,31 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('Trainingset.csv')
+
+from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+
+df['Sex'] = le.fit_transform(df['Sex'])
+
+y = df.iloc[:,-1]
+
+x = df.drop(columns=["Weight"], axis=0)
+
+from sklearn import tree
+clf = tree.DecisionTreeRegressor()
+clf = clf.fit(x, y)
+
+model = clf
+
+file = 'trained.sav'
+pickle.dump(model,open(file,'wb'))
+
+model_load = pickle.load(open('trained.sav','rb'))
+
+# main
 import streamlit as st
 from langchain_groq import ChatGroq
 import pickle
