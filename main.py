@@ -24,11 +24,17 @@ if 'groq_api_key' in locals():
 
 # Load the pre-trained model
 model_load = 0;
-
 try:
-    model_load = pickle.load(open('trained.sav', 'rb'))
-except FileNotFoundError:
-    st.error("The trained model file 'trained.sav' was not found.")
+    with open('trained.sav', 'rb') as f:
+        model_load = pickle.load(f)
+    st.write("Model loaded successfully.")
+except Exception as e:
+    st.error(f"Error loading the model: {str(e)}")
+
+# try:
+#     model_load = pickle.load(open('trained.sav', 'rb'))
+# except FileNotFoundError:
+#     st.error("The trained model file 'trained.sav' was not found.")
 
 # Custom CSS for better styling
 st.markdown("""
