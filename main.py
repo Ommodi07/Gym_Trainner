@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import pickle
 
 df = pd.read_csv('Trainingset.csv')
 
@@ -28,7 +29,6 @@ model_load = pickle.load(open('trained.sav','rb'))
 # main
 import streamlit as st
 from langchain_groq import ChatGroq
-import pickle
 
 # Securely load the API key with error handling
 try:
@@ -49,14 +49,11 @@ if 'groq_api_key' in locals():
         groq_api_key=groq_api
     )
 
-import joblib
-joblib.dump('trained.sav')
-
 # Load the pre-trained model
 model_load = 0;
 
 try:
-    model_load = joblib.load('trained.sav')
+    model_load = pickle.load(open('trained.sav','rb'))
 except FileNotFoundError:
     st.error("The trained model file 'trained.sav' was not found.")
 
