@@ -11,6 +11,7 @@ except KeyError:
 import os
 st.write("Current working directory:", os.getcwd())
 st.write("Files in directory:", os.listdir(os.getcwd()))
+print("File exists:", os.path.exists('trained.sav'))
 
 llm = 0;
 # Initialize the ChatGroq model
